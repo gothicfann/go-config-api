@@ -2,7 +2,7 @@
 
 ### Endpoints
 
-Following are the endpoints are implemented:
+Following are the endpoints that are implemented:
 
 | Name   | Method      | URL                          |
 | ------ | ----------- | ---------------------------- |
