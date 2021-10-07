@@ -1,0 +1,43 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: config-api
+  name: config-api
+spec:
+  selector:
+    matchLabels:
+      app: config-api
+  template:
+    metadata:
+      labels:
+        app: config-api
+    spec:
+      containers:
+        - image: gothicfan/config-api
+          name: pleo-config-api
+          ports:
+            - containerPort: 9090
+              name: config-api
+          env:
+            - name: SERVE_PORT
+              value: "9090"
+          resources:
+            requests:
+              cpu: 50m
+              memory: 100Mi
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: config-api
+            failureThreshold: 1
+            periodSeconds: 30
+            successThreshold: 1
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: config-api
+            failureThreshold: 1
+            periodSeconds: 30
+            successThreshold: 1

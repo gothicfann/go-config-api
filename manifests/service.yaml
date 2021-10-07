@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: config-api
+  name: config-api
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: config-api
+      nodePort: 32000
+  selector:
+    app: config-api
+  type: NodePort
